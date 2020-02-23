@@ -1,6 +1,12 @@
 name: Node.js CI
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -18,7 +24,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+    - run: npm run build
+    - run: npm build-storybook
+    - run: npm deploy-storybook
+    - name: Semantic Release
+      uses: cycjimmy/semantic-release-action@v2
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       env:
         CI: true

@@ -30,7 +30,6 @@ jobs:
     - name: Semantic Release
       uses: cycjimmy/semantic-release-action@v2
       env:
+        CI: true
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      env:
-        CI: true

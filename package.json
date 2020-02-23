@@ -23,11 +23,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "deploy-storybook": "storybook-to-ghpages",
-    "semantic-release": "semantic-release"
+    "release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pavelkukov/react-dial-knob"
+    "url": "git+https://pavelkukov@bitbucket.org/pavelkukov/react-dial-knob.git"
   },
   "keywords": [
     "dial",
@@ -37,7 +37,7 @@
     "component"
   ],
   "author": "Pavel Kukov <pavelkukov@gmail.com>",
-  "homepage": "https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-read-me--readme",
+  "homepage": "https://bitbucket.org/pavelkukov/react-dial-knob#readme",
   "devDependencies": {
     "@babel/core": "^7.8.3",
     "@babel/preset-env": "^7.8.3",

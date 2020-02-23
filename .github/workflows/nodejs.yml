@@ -26,6 +26,7 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm run build-storybook
+    - run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
     - run: npm run deploy-storybook -- --ci
     - run: npm run semantic-release
       env:

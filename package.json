@@ -1,0 +1,109 @@
+{
+  "name": "react-dial-knob",
+  "version": "0.0.1",
+  "description": "Dial knob UI component based on HTML tags. Easy to extend and style.",
+  "license": "MIT",
+  "main": "dist/react-dial-knob.cjs.js",
+  "module": "dist/react-dial-knob.es.js",
+  "jsnext:main": "dist/react-dial-knob.es.js",
+  "types": "dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{ts,tsx}\" \"stories/**/*.{ts,tsx}\"",
+    "lint": "tsc&&npm run lint:src&&npm run lint:stories",
+    "lint:src": "eslint --ext .ts,.tsx src/",
+    "lint:stories": "eslint --ext .ts,.tsx stories/",
+    "build": "rollup -c",
+    "build:watch": "rollup -c --watch",
+    "test": "jest -c jest.config.js",
+    "test:watch": "jest -c jest.config.js --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
+    "release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://pavelkukov@bitbucket.org/pavelkukov/react-dial-knob.git"
+  },
+  "keywords": [
+    "dial",
+    "knob",
+    "react",
+    "UI",
+    "component"
+  ],
+  "author": "Pavel Kukov <pavelkukov@gmail.com>",
+  "homepage": "https://bitbucket.org/pavelkukov/react-dial-knob#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@semantic-release/github": "^7.0.4",
+    "@semantic-release/npm": "^7.0.3",
+    "@semantic-release/release-notes-generator": "^9.0.0",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-knobs": "^5.3.13",
+    "@storybook/addon-links": "^5.3.13",
+    "@storybook/addon-notes": "^5.3.12",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
+    "@storybook/storybook-deployer": "^2.8.2",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/react-hooks": "^3.2.1",
+    "@types/jest": "^25.1.0",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "@types/testing-library__jest-dom": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-jest": "^25.1.0",
+    "babel-loader": "^8.0.6",
+    "commitlint": "^8.3.5",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.6.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
+    "husky": "^4.2.3",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-collapsible": "^2.6.3",
+    "react-markdown": "^4.3.1",
+    "react-syntax-highlighter": "^12.2.1",
+    "react-test-renderer": "^16.12.0",
+    "rollup": "^1.30.1",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "rollup-plugin-visualizer": "^3.3.1",
+    "semantic-release": "^17.0.4",
+    "ts-jest": "^25.0.0",
+    "ts-mockito": "^2.5.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "^16.12.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format&&npm run lint",
+      "pre-push": "npm run test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}

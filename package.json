@@ -29,6 +29,11 @@
     "type": "git",
     "url": "https://github.com/pavelkukov/react-dial-knob"
   },
+  "storybook-deployer": {
+    "gitUsername": "pavelkukov",
+    "gitEmail": "pavelkukov@gmail.com",
+    "commitMessage": "Deploy Storybook to GitHub Pages"
+  },
   "keywords": [
     "dial",
     "knob",

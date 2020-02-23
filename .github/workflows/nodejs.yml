@@ -25,10 +25,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm run build
-    - run: npm build-storybook
-    - run: npm deploy-storybook
-    - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v2
+    - run: npm run build-storybook
+    - run: npm run deploy-storybook
+    - run: npm run semantic-release
       env:
         CI: true
         GH_TOKEN: ${{ secrets.GH_TOKEN }}

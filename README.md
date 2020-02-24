@@ -2,11 +2,11 @@
 UI control that should be rotated to change the value. Similar to a slider, but circular.
 
 ## 🦚 Skins Demo
-* Basic
-* Donut
-* HighContrast
-* Silver
-* White
+* [Basic](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--basic)
+* [Donut](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--donut)
+* [HighContrast](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--high-contrast)
+* [Silver](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--silver)
+* [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white)
 
 ## 🎯 Features
 
@@ -27,7 +27,7 @@ npm install --save-dev react-dial-knob
 ## ✔ Usage
 1. You have to store `value` and update the component (controlled component).
 2. Four of the skins are having `theme` prop. (Docs and playground in storybook)
-3. Custom skin creation tutorial in storybook. (131 lines - text and code)
+3. [Custom skin creation tutorial](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) in storybook. (131 lines - text and code)
 
 ```typescript
 import React, { useState } from 'react'

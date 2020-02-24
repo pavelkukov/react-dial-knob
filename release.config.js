@@ -2,6 +2,20 @@ module.exports = {
     branches: ['master', 'next'],
     plugins: [
         [
+            '@semantic-release/commit-analyzer',
+            {
+                preset: 'conventionalcommits',
+                releaseRules: [
+                    { type: 'docs', release: 'patch' },
+                    { type: 'refactor', release: 'patch' },
+                    { type: 'style', release: 'patch' },
+                ],
+                parserOpts: {
+                    noteKeywords: ['BREAKING CHANGE', 'BREAKING CHANGES'],
+                },
+            },
+        ],
+        [
             '@semantic-release/release-notes-generator',
             {
                 preset: 'angular',
@@ -15,11 +29,6 @@ module.exports = {
                 writerOpts: {
                     commitsSort: ['subject', 'scope'],
                 },
-                releaseRules: [
-                    { type: 'docs', release: 'patch' },
-                    { type: 'refactor', release: 'patch' },
-                    { type: 'style', release: 'patch' },
-                ],
             },
         ],
         [

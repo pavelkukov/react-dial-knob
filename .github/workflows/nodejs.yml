@@ -28,6 +28,8 @@ jobs:
     - uses: webfactory/ssh-agent@v0.2.0
       with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
+    - run: git branch -D gh-pages
+    - run: git fetch origin gh-pages:gh-pages
     - run: npm run deploy-storybook -- --ci
     - run: npm run build
     - run: npm run semantic-release

@@ -1,12 +1,14 @@
 # React Dial Knob
 UI control that should be rotated to change the value. Similar to a slider, but circular.
 
+
 ## 🦚 Skins Demo
 * [Basic](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--basic)
 * [Donut](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--donut)
 * [HighContrast](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--high-contrast)
 * [Silver](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--silver)
 * [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white)
+
 
 ## 🎯 Features
 
@@ -18,6 +20,7 @@ UI control that should be rotated to change the value. Similar to a slider, but 
 
 ![Donut Knob](/docs/images/donut-konb-180.gif)
 ![Scripting time is only 4%](/docs/images/scripting-only.png)
+
 
 ## 🧩 Installing
 ```shell
@@ -51,12 +54,16 @@ export default function MyPage() {
     </Donut>
 }
 ```
+
+
 ## 🧾 Notes
 
 ###### sideEffects is set to false - tree shaking will remove all unused parts and will further reduce the size of your final bundle.
 
+
 ## 👋 Author
 Pavel Kukov <pavelkukov@gmail.com>
+
 
 ## © LICENSE (MIT)
 See LICENSE.txt in the root directory

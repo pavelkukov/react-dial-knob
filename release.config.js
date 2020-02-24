@@ -20,13 +20,7 @@ module.exports = {
         [
             '@semantic-release/github',
             {
-                assets: [
-                    ['dist'],
-                    {
-                        path: 'build/react-dial-knob.zip',
-                        label: 'react-dial-knob',
-                    },
-                ],
+                assets: [{ path: '*.tgz', label: 'react-dial-knob' }],
             },
         ],
         '@semantic-release/npm',

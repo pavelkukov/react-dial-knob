@@ -31,7 +31,7 @@ describe('class KnobArea', () => {
     when(DivClass.clientTop).thenReturn(0)
     const RefClass = mock<React.RefObject<HTMLDivElement>>()
     when(RefClass.current).thenReturn(instance(DivClass))
-    
+
     const ref = instance(RefClass)
 
     it('constructor should throw if min, max or value are not divisible by step', () => {

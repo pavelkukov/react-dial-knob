@@ -7,6 +7,7 @@ class KnobArea {
     min: number
     max: number
     step: number
+    diameter: number
     spaceMaxFromZero: boolean
     refElement: React.RefObject<HTMLDivElement>
     windowEventListeners: {
@@ -54,6 +55,7 @@ class KnobArea {
         this.min = props.min
         this.max = props.max
         this.step = props.step
+        this.diameter = props.diameter
 
         this.onAngleChange = props.onAngleChange || this.onAngleChange
         this.onValueChange = props.onValueChange || this.onValueChange
@@ -137,14 +139,32 @@ class KnobArea {
     }
 
     updateAreaLocation(): void {
-        const areaRect = this.refElement.current.getBoundingClientRect()
-        const bodyRect = document.body.getBoundingClientRect()
-        const areaRadius = areaRect.width / 2
-        const offsetTop = areaRect.top - bodyRect.top
-        const offsetLeft = areaRect.left - bodyRect.left
+        const areaRadius = this.diameter / 2
+        // See article with explanation at: https://www.kirupa.com/html5/get_element_position_using_javascript.htm
+        let x = 0
+        let y = 0
+        let el = this.refElement.current as HTMLElement
+        while (el) {
+            if (el.tagName.toUpperCase() === 'BODY') {
+                // deal with browser quirks with body/window/document and page scroll
+                const xScroll =
+                    el.scrollLeft || document.documentElement.scrollLeft
+                const yScroll =
+                    el.scrollTop || document.documentElement.scrollTop
 
-        this._locationX = offsetLeft + areaRadius
-        this._locationY = offsetTop + areaRadius
+                x += el.offsetLeft - xScroll + el.clientLeft
+                y += el.offsetTop - yScroll + el.clientTop
+            } else {
+                // for all other non-BODY elements
+                x += el.offsetLeft - el.scrollLeft + el.clientLeft
+                y += el.offsetTop - el.scrollTop + el.clientTop
+            }
+
+            el = el.offsetParent as HTMLElement
+        }
+
+        this._locationX = x + areaRadius
+        this._locationY = y + areaRadius
     }
 
     calcDegreeOfRotation(pageX: number, pageY: number): number {

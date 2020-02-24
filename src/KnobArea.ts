@@ -47,7 +47,7 @@ class KnobArea {
     updateFromProps(props: KnobProps): void {
         if (props.max <= props.min || props.max < props.min + props.step) {
             throw new Error(
-                'Max value should be bigger or equal to min(plus step) value.',
+                'Max value should be bigger or equal to min+step value.',
             )
         }
 

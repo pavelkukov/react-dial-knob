@@ -15,6 +15,11 @@ module.exports = {
                 writerOpts: {
                     commitsSort: ['subject', 'scope'],
                 },
+                releaseRules: [
+                    { type: 'docs', release: 'patch' },
+                    { type: 'refactor', release: 'patch' },
+                    { type: 'style', release: 'patch' },
+                ],
             },
         ],
         [

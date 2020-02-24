@@ -31,6 +31,7 @@ jobs:
     - run: git fetch origin gh-pages:gh-pages
     - run: npm run deploy-storybook -- --ci
     - run: npm run build
+    - run: npm pack
     - run: npm run semantic-release
       env:
         CI: true

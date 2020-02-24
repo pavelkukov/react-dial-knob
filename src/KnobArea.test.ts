@@ -11,34 +11,28 @@ interface Global {
 declare const global: Global
 
 describe('class KnobArea', () => {
-    const ref = mock<React.RefObject<HTMLDivElement>>()
-    ref.current.getBoundingClientRect = (): DOMRect => {
-        const rect = mock<DOMRect>()
-        when(rect.top).thenReturn(100)
-        when(rect.left).thenReturn(120)
-        when(rect.width).thenReturn(180)
-        return instance(rect)
-    }
-    const body = mock<HTMLBodyElement>()
-    when(body.getBoundingClientRect).thenReturn(() => {
-        const rect = mock<DOMRect>()
-        when(rect.top).thenReturn(10)
-        when(rect.left).thenReturn(10)
-        return instance(rect)
-    })
-
-    const origBody = global.document.body
-    beforeAll(() => {
-        Object.defineProperty(document, 'body', {
-            value: instance(body),
-        })
-    })
-
-    afterAll(() => {
-        Object.defineProperty(document, 'body', {
-            value: origBody,
-        })
-    })
+    const BodyClass = mock<HTMLBodyElement>()
+    when(BodyClass.tagName).thenReturn('BODY')
+    when(BodyClass.offsetParent).thenReturn(null)
+    when(BodyClass.scrollLeft).thenReturn(0)
+    when(BodyClass.scrollTop).thenReturn(0)
+    when(BodyClass.offsetLeft).thenReturn(0)
+    when(BodyClass.offsetTop).thenReturn(0)
+    when(BodyClass.clientLeft).thenReturn(0)
+    when(BodyClass.clientTop).thenReturn(0)
+    const DivClass = mock<HTMLDivElement>()
+    when(DivClass.tagName).thenReturn('DIV')
+    when(DivClass.offsetParent).thenReturn(instance(BodyClass))
+    when(DivClass.scrollLeft).thenReturn(0)
+    when(DivClass.scrollTop).thenReturn(0)
+    when(DivClass.offsetLeft).thenReturn(180)
+    when(DivClass.offsetTop).thenReturn(100)
+    when(DivClass.clientLeft).thenReturn(0)
+    when(DivClass.clientTop).thenReturn(0)
+    const RefClass = mock<React.RefObject<HTMLDivElement>>()
+    when(RefClass.current).thenReturn(instance(DivClass))
+    
+    const ref = instance(RefClass)
 
     it('constructor should throw if min, max or value are not divisible by step', () => {
         expect(
@@ -270,7 +264,7 @@ describe('class KnobArea', () => {
         const area = new KnobArea(ref, props)
         area.updateAreaLocation()
         const angle = area.calcDegreeOfRotation(240, 360)
-        expect(Math.ceil(angle)).toEqual(168)
+        expect(Math.ceil(angle)).toEqual(191)
     })
 
     it('valueFromAngle() will return value per given angle', () => {

@@ -1,6 +1,6 @@
 {
   "name": "react-dial-knob",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "Dial knob UI component based on HTML tags. Easy to extend and style.",
   "license": "MIT",
   "main": "dist/react-dial-knob.cjs.js",

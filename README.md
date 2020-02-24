@@ -1,5 +1,5 @@
 # React Dial Knob
-UI control that should be rotated to change the value. Similar to a slider, but circular.
+Similar to a slider, but circular.
 
 
 ## 🦚 Skins Demo
@@ -13,7 +13,7 @@ UI control that should be rotated to change the value. Similar to a slider, but 
 ## 🎯 Features
 
 * **Fast** ~4% scripting time while interacting
-* **Small size** ~5kb(gzipped) if a all 5 skins are imported/used (see: stats.html)
+* **Small size** ~5kb(gzipped) with a all 5 skins | ~2kb core functionality
 * Support **arrow keys, touch and mouse**
 * **Themes** + **Custom skins** with ease
 * **Zero dependencies**
@@ -26,11 +26,18 @@ UI control that should be rotated to change the value. Similar to a slider, but 
 ```shell
 npm install --save-dev react-dial-knob
 ```
+**UMD module**
+```html
+https://unpkg.com/react-dial-knob/dist/react-dial-knob.umd.js
+```
 
 ## ✔ Usage
 1. You have to store `value` and update the component (controlled component).
 2. Four of the skins are having `theme` prop. (Docs and playground in storybook)
 3. [Custom skin creation tutorial](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) in storybook. (131 lines - text and code)
+
+_________________________________________________________________________
+[See at CodePen](https://codepen.io/pavelkukov/pen/xxGgZvL?editors=0010)
 
 ```typescript
 import React, { useState } from 'react'
@@ -67,3 +74,9 @@ Pavel Kukov <pavelkukov@gmail.com>
 
 ## © LICENSE (MIT)
 See LICENSE.txt in the root directory
+
+
+## 🙌 Acknowledgments
+* Repo structure and tooling are inspired by: https://github.com/danilowoz/react-content-loader
+* Silver theme is based on https://codepen.io/simurai/pen/DwJdq
+* Donut theme is based on https://codepen.io/Hyungsub08/pen/yLBPJKW

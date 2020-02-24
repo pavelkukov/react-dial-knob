@@ -46,9 +46,9 @@ const umdConfig = mergeAll([
         output: mergeAll([
             configBase.output,
             {
-                file: `dist/${pkg.name}.js`,
+                file: `dist/${pkg.name}.umd.js`,
                 format: 'umd',
-                name: 'ContentLoader',
+                name: 'ReactDialKnob',
                 globals,
             },
         ]),

@@ -9,7 +9,8 @@ export default function Heading(props: HeadingProps): JSX.Element {
     return createElement(
         `h${props.level}`,
         {
-            id: props.children[0].props.value &&
+            id:
+                props.children[0].props.value &&
                 props.children[0].props.value
                     .replace(/\s/gi, '-')
                     .toLowerCase(),

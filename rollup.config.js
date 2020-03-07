@@ -3,6 +3,7 @@ import replace from 'rollup-plugin-replace'
 import { uglify } from 'rollup-plugin-uglify'
 import typescript from 'rollup-plugin-typescript2'
 import visualizer from 'rollup-plugin-visualizer'
+import gzipPlugin from 'rollup-plugin-gzip'
 
 import pkg from './package.json'
 
@@ -25,7 +26,6 @@ const commonPlugins = [
     typescript({
         typescript: require('typescript'),
     }),
-    visualizer(),
 ]
 
 const configBase = {
@@ -93,6 +93,32 @@ const prodUmdConfig = mergeAll([
     },
 ])
 
+const prodUmdConfigGZ = mergeAll([
+    prodUmdConfig,
+    {
+        plugins: prodUmdConfig.plugins.concat(gzipPlugin()),
+    },
+])
+
+const prodCoreOnlyUmdConfigGZ = mergeAll([
+    prodUmdConfig,
+    {
+        input: 'src/Knob.tsx',
+        output: mergeAll([
+            umdConfig.output,
+            {
+                file: umdConfig.output.file.replace(
+                    /\.js$/,
+                    '.core-only.min.js',
+                ),
+            },
+        ]),
+    },
+    {
+        plugins: prodUmdConfig.plugins.concat(gzipPlugin()),
+    },
+])
+
 const webConfig = mergeAll([
     configBase,
     {
@@ -101,8 +127,19 @@ const webConfig = mergeAll([
             mergeAll([configBase.output, { ...esm, file: pkg.module }]),
             mergeAll([configBase.output, { ...cjs, file: pkg.main }]),
         ],
-        plugins: configBase.plugins.concat(),
+        plugins: configBase.plugins.concat(
+            visualizer({
+                sourcemap: true,
+                template: 'treemap',
+            }),
+        ),
     },
 ])
 
-export default [devUmdConfig, prodUmdConfig, webConfig]
+export default [
+    devUmdConfig,
+    prodUmdConfig,
+    prodUmdConfigGZ,
+    prodCoreOnlyUmdConfigGZ,
+    webConfig,
+]

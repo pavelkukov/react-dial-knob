@@ -103,7 +103,7 @@ const prodUmdConfigGZ = mergeAll([
 const prodCoreOnlyUmdConfigGZ = mergeAll([
     prodUmdConfig,
     {
-        input: 'src/Knob.tsx',
+        input: 'src/core-only.ts',
         output: mergeAll([
             umdConfig.output,
             {

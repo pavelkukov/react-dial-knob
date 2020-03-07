@@ -24,15 +24,9 @@ The package comes with five themable skins.
 * [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white)
 
 _________________________________________________________________________
-A short tutorial on how to ["Create skin component"](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) can be found in the storybook. Essentially drop an SVG with few lines of code.
+A short tutorial on how to ["Create skin component"](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) can be found in the storybook and [CodePen](https://codepen.io/pavelkukov/pen/LYVOLoO?editors=0010). Essentially drop an SVG with few lines of code.
 _________________________________________________________________________
 
-
-## 🎯 Features
-
-* **Small size** ~5kb(gzipped) with a all 5 skins included | [~2kb core functionality](https://unpkg.com/react-dial-knob/dist/react-dial-knob.umd.core-only.min.js.gz)
-* Support **arrow keys, touch and mouse**
-* **Themes** + **Custom skins** with **Zero dependencies**
 
 ## 📈 Performance
 ~4% scripting time while interacting, 96% Idle
@@ -51,10 +45,7 @@ https://unpkg.com/react-dial-knob/dist/react-dial-knob.umd.js
 ```
 
 ## ✔ Usage
-1. You have to store `value` and update the component (controlled component).
-2. Four of the skins are having `theme` prop. (Docs and playground in storybook)
-3. [Custom skin creation tutorial](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) in storybook. (131 lines - text and code)
-
+You have to store `value` and update the component (controlled component).
 _________________________________________________________________________
 [See at CodePen](https://codepen.io/pavelkukov/pen/xxGgZvL?editors=0010)
 

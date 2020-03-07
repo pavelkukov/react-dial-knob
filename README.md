@@ -79,6 +79,11 @@ export default function MyPage() {
 
 Skins are independent of each other. The final bundle size is a sum of common dependencies plus skin size (typically around ~2.5kb with a single skin). Indicative stats on sizes can be found in ["stats.html"](https://github.com/pavelkukov/react-dial-knob/blob/master/stats.html)
 
+** Core-only UMD build is available **
+```
+https://unpkg.com/react-dial-knob/dist/react-dial-knob.umd.core-only.min.js
+```
+
 * NPM - https://www.npmjs.com/package/react-dial-knob
 * GitHub - https://github.com/pavelkukov/react-dial-knob
 * Storybook - https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-read-me--readme

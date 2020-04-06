@@ -119,9 +119,6 @@ class KnobArea {
             return
         }
         this._isInteracting = val
-        if (val === true) {
-            this.updateAreaLocation()
-        }
         if (this.onInteractionChange) {
             this.onInteractionChange(this._isInteracting)
         }
@@ -138,7 +135,12 @@ class KnobArea {
         return 360 / this.numSteps
     }
 
-    updateAreaLocation(): void {
+    updateAreaLocation(eventCoords: {
+        pageX: number
+        pageY: number
+        clientX: number
+        clientY: number
+    }): void {
         const areaRadius = this.diameter / 2
         // See article with explanation at: https://www.kirupa.com/html5/get_element_position_using_javascript.htm
         let x = 0
@@ -165,6 +167,9 @@ class KnobArea {
 
         this._locationX = x + areaRadius
         this._locationY = y + areaRadius
+        
+        this._locationX += eventCoords.pageX - eventCoords.clientX
+        this._locationY += eventCoords.pageY - eventCoords.clientY
     }
 
     calcDegreeOfRotation(pageX: number, pageY: number): number {
@@ -207,7 +212,8 @@ class KnobArea {
 
     handleOnMouseDown = (event: React.MouseEvent): void => {
         this.addWindowEventListeners('mouse')
-        const { pageX, pageY } = event
+        const { pageX, pageY, clientX, clientY } = event    
+        this.updateAreaLocation({ pageX, pageY, clientX, clientY })
         this.updateAngleValue(pageX, pageY)
     }
 
@@ -224,10 +230,10 @@ class KnobArea {
     }
 
     handleOnTouchStart = (event: React.TouchEvent): void => {
-        this.isInteracting = true
         this.addWindowEventListeners('touch')
         if ('changedTouches' in event && event.changedTouches.length === 1) {
-            const { pageX, pageY } = event.changedTouches[0]
+            const { pageX, pageY, clientX, clientY } = event.changedTouches[0]
+            this.updateAreaLocation({ pageX, pageY, clientX, clientY })
             this.updateAngleValue(pageX, pageY)
         }
     }

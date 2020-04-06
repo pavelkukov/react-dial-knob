@@ -178,21 +178,6 @@ describe('class KnobArea', () => {
         expect(area.onValueChange).toHaveBeenCalledTimes(2)
     })
 
-    it('updateAreaLocation method should be invoked when isInteracting = true', () => {
-        jest.spyOn(KnobArea.prototype, 'updateAreaLocation')
-        const area = new KnobArea(ref, {
-            diameter: 180,
-            min: 0,
-            max: 100,
-            step: 1,
-            value: 50,
-        })
-
-        expect(area.updateAreaLocation).not.toHaveBeenCalled()
-        area.isInteracting = true
-        expect(area.updateAreaLocation).toHaveBeenCalled()
-    })
-
     it('onInteractionChange callback should be invoked when isInteracting changes', () => {
         const onInteractionChange = jest.fn()
         const area = new KnobArea(ref, {
@@ -262,7 +247,7 @@ describe('class KnobArea', () => {
             value: 50,
         }
         const area = new KnobArea(ref, props)
-        area.updateAreaLocation()
+        area.updateAreaLocation({ pageX: 0, pageY: 0, clientX: 0, clientY: 0 })
         const angle = area.calcDegreeOfRotation(240, 360)
         expect(Math.ceil(angle)).toEqual(191)
     })

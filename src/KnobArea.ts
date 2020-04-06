@@ -167,7 +167,7 @@ class KnobArea {
 
         this._locationX = x + areaRadius
         this._locationY = y + areaRadius
-        
+
         this._locationX += eventCoords.pageX - eventCoords.clientX
         this._locationY += eventCoords.pageY - eventCoords.clientY
     }
@@ -212,7 +212,7 @@ class KnobArea {
 
     handleOnMouseDown = (event: React.MouseEvent): void => {
         this.addWindowEventListeners('mouse')
-        const { pageX, pageY, clientX, clientY } = event    
+        const { pageX, pageY, clientX, clientY } = event
         this.updateAreaLocation({ pageX, pageY, clientX, clientY })
         this.updateAngleValue(pageX, pageY)
     }

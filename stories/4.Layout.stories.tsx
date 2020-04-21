@@ -143,6 +143,88 @@ export function MultipleKnobsAndPositionsDemo(): JSX.Element {
                     }}
                 />
             </div>
+            <div>
+                <h1>CSS transform: translate, translate3d, scale</h1>
+                <div
+                    style={{
+                        position: 'relative',
+                        height: '520px',
+                        backgroundColor: '#d99',
+                    }}
+                >
+                    <PositionedKnob
+                        style={{
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            transform: 'translate3d(0, 0, 0)',
+                        }}
+                    />
+                    <PositionedKnob
+                        style={{
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            transform:
+                                'translate3d(5em, 260px, 50px) scale(0.5)',
+                        }}
+                    />
+                    <PositionedKnob
+                        style={{
+                            position: 'absolute',
+                            top: '0',
+                            left: '0',
+                            transform: 'translate3d(260px, 130px, 0)',
+                        }}
+                    />
+                    <div
+                        style={{
+                            position: 'absolute',
+                            left: 0,
+                            top: 0,
+                            transform: 'translate3d(480px, 0, 0)',
+                        }}
+                    >
+                        <PositionedKnob
+                            style={{
+                                position: 'absolute',
+                                top: '0',
+                                left: '0',
+                                transform: 'translate3d(0, 0, 0)',
+                            }}
+                        />
+                        <PositionedKnob
+                            style={{
+                                position: 'absolute',
+                                top: '0',
+                                left: '0',
+                                transform:
+                                    'translate3d(5em, 260px, 50px) scale(0.7)',
+                            }}
+                        />
+                        <PositionedKnob
+                            style={{
+                                position: 'absolute',
+                                top: '0',
+                                left: '0',
+                                transform: 'translate3d(260px, 130px, 0)',
+                            }}
+                        />
+                    </div>
+                </div>
+                <div
+                    style={{
+                        color: 'red',
+                        fontSize: '22px',
+                        padding: '10px',
+                        margin: '10px',
+                        border: '1px solid red',
+                    }}
+                >
+                    If parent container uses CSS transform scale, Knob diameter
+                    is not calculated properly. Known issue!
+                </div>
+            </div>
             <PositionedKnob
                 style={{
                     position: 'relative',

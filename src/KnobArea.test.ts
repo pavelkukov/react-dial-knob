@@ -10,6 +10,12 @@ interface Global {
 
 declare const global: Global
 
+// Mock getComputedStyle used in KnobArea.getComputedTransformXY
+global.window.getComputedStyle = (): CSSStyleDeclaration => {
+    const DivElement = mock<HTMLDivElement>()
+    return instance(DivElement).style
+}
+
 describe('class KnobArea', () => {
     const BodyClass = mock<HTMLBodyElement>()
     when(BodyClass.tagName).thenReturn('BODY')

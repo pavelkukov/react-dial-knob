@@ -135,6 +135,41 @@ class KnobArea {
         return 360 / this.numSteps
     }
 
+    private getComputedTransformXY(
+        el: HTMLElement,
+    ): { x: number; y: number; scaleX: number; scaleY: number } {
+        if (!window.getComputedStyle || !el) {
+            return { x: 0, y: 0, scaleX: 1, scaleY: 1 }
+        }
+
+        const style = window.getComputedStyle(el)
+        const transform = style.transform || style.webkitTransform
+        if (!transform) {
+            return { x: 0, y: 0, scaleX: 1, scaleY: 1 }
+        }
+        let mat = transform.match(/^matrix3d\((.+)\)$/)
+        if (mat) {
+            const scaleX = parseFloat(mat[1].split(', ')[0])
+            const scaleY = parseFloat(mat[1].split(', ')[5])
+            return {
+                x: parseFloat(mat[1].split(', ')[12]),
+                y: parseFloat(mat[1].split(', ')[13]),
+                scaleX,
+                scaleY,
+            }
+        }
+
+        mat = transform.match(/^matrix\((.+)\)$/)
+        const scaleX = mat ? parseFloat(mat[1].split(', ')[0]) : 1
+        const scaleY = mat ? parseFloat(mat[1].split(', ')[3]) : 1
+        return {
+            x: mat ? parseFloat(mat[1].split(', ')[4]) : 0,
+            y: mat ? parseFloat(mat[1].split(', ')[5]) : 0,
+            scaleX,
+            scaleY,
+        }
+    }
+
     updateAreaLocation(eventCoords: {
         pageX: number
         pageY: number
@@ -146,6 +181,7 @@ class KnobArea {
         let x = 0
         let y = 0
         let el = this.refElement.current as HTMLElement
+        let transformXY = this.getComputedTransformXY(el)
         while (el) {
             if (el.tagName.toUpperCase() === 'BODY') {
                 // deal with browser quirks with body/window/document and page scroll
@@ -161,8 +197,10 @@ class KnobArea {
                 x += el.offsetLeft - el.scrollLeft + el.clientLeft
                 y += el.offsetTop - el.scrollTop + el.clientTop
             }
-
+            x += transformXY.x
+            y += transformXY.y
             el = el.offsetParent as HTMLElement
+            transformXY = this.getComputedTransformXY(el)
         }
 
         this._locationX = x + areaRadius

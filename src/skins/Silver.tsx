@@ -3,6 +3,7 @@ import Knob from '../Knob'
 import SkinWrap from './layout/SkinWrap'
 import SkinProps from './SkinProps'
 import composeTwo from '../util/composeTwo'
+import useAngleUpdater from '../util/useAngleUpdater'
 
 /*
  * CSS for this component is written by @simurai
@@ -12,12 +13,12 @@ import composeTwo from '../util/composeTwo'
 
 const uniqClassName = `metal-${new Date().getTime()}`
 
-export default function Silver(props: SkinProps<{}>): JSX.Element {
-    const [angle, setAngle] = useState(0)
+export default function Silver(props: SkinProps<unknown>): JSX.Element {
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [bgrClass, setBgrClass] = useState(`${uniqClassName}-bgr`)
 
     const angleChangeHandler = composeTwo<number>(setAngle, props.onAngleChange)
-    const interactionChangeHandler = composeTwo<boolean>(isInteracting => {
+    const interactionChangeHandler = composeTwo<boolean>((isInteracting) => {
         isInteracting
             ? setBgrClass(`${uniqClassName}-bgr-active`)
             : setBgrClass(`${uniqClassName}-bgr`)
@@ -134,8 +135,9 @@ export default function Silver(props: SkinProps<{}>): JSX.Element {
                             width: props.diameter,
                             height: props.diameter,
                             userSelect: 'none',
-                            margin: `${glowSpacing / 2}px 0 0 ${glowSpacing /
-                                2}px`,
+                            margin: `${glowSpacing / 2}px 0 0 ${
+                                glowSpacing / 2
+                            }px`,
                         }}
                     >
                         <div

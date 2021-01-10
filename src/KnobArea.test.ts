@@ -301,7 +301,7 @@ describe('class KnobArea', () => {
     })
 
     it('updateAngleValue() should update value and angle on requestAnimationFrame', () => {
-        global.requestAnimationFrame = jest.fn(callback => {
+        global.requestAnimationFrame = jest.fn((callback) => {
             callback()
             return 1
         })
@@ -544,7 +544,7 @@ describe('class KnobArea', () => {
         area.angle = area.angleFromValue(98)
 
         const KeyboardEventClass = mock<React.KeyboardEvent>()
-        when(KeyboardEventClass.keyCode).thenReturn(38)
+        when(KeyboardEventClass.key).thenReturn('ArrowUp')
         const keyboardEvent = instance(KeyboardEventClass)
 
         expect(area.value).toBe(98)
@@ -577,7 +577,7 @@ describe('class KnobArea', () => {
         area.angle = area.angleFromValue(2)
 
         const KeyboardEventClass = mock<React.KeyboardEvent>()
-        when(KeyboardEventClass.keyCode).thenReturn(40)
+        when(KeyboardEventClass.key).thenReturn('ArrowDown')
         const keyboardEvent = instance(KeyboardEventClass)
 
         expect(area.value).toBe(2)

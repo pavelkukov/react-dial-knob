@@ -3,6 +3,7 @@ import Knob from '../Knob'
 import SkinWrap from './layout/SkinWrap'
 import SkinProps from './SkinProps'
 import composeTwo from '../util/composeTwo'
+import useAngleUpdater from '../util/useAngleUpdater'
 
 export interface WhiteTheme {
     activeNotchColor?: string
@@ -12,7 +13,7 @@ export interface WhiteTheme {
 }
 
 export default function White(props: SkinProps<WhiteTheme>): JSX.Element {
-    const [angle, setAngle] = useState(0)
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [isActive, setIsActive] = useState(false)
     const theme = props.theme || {}
     const activeNotchColor = theme.activeNotchColor || '#b56a7a'
@@ -116,8 +117,9 @@ export default function White(props: SkinProps<WhiteTheme>): JSX.Element {
                             />
                         </g>
                         <g
-                            transform={`translate(${62.463 / 2} ${62.463 /
-                                2}) scale(0.45) rotate(-90)`}
+                            transform={`translate(${62.463 / 2} ${
+                                62.463 / 2
+                            }) scale(0.45) rotate(-90)`}
                         >
                             {Array.from(new Array(numNotches)).map(
                                 (_, index) => {
@@ -145,9 +147,13 @@ export default function White(props: SkinProps<WhiteTheme>): JSX.Element {
                                             height={height}
                                             x={x}
                                             y={y}
-                                            transform={`rotate(${index *
-                                                Math.ceil(360 / numNotches) +
-                                                90} ${origX} ${origY})`}
+                                            transform={`rotate(${
+                                                index *
+                                                    Math.ceil(
+                                                        360 / numNotches,
+                                                    ) +
+                                                90
+                                            } ${origX} ${origY})`}
                                         />
                                     )
                                 },

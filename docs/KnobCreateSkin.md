@@ -39,9 +39,9 @@ const IndexPage = () => {
 ```typescript
 import React, { useState } from 'react'
 ```
-2. Import Knob, SkinWrap, KnobProps, composeTwo
+2. Import Knob, SkinWrap, KnobProps, composeTwo, useAngleUpdater
 ```typescript
-import Knob, { SkinWrap, KnobProps, composeTwo } from 'react-dial-knob'
+import Knob, { SkinWrap, KnobProps, composeTwo, useAngleUpdater } from 'react-dial-knob'
 ```
 * Knob - main component
 * SkinWrap - just a `<div />` wrapper with position relative. It could be replaced with something else.
@@ -53,6 +53,7 @@ composeTwo: <T>(
     callback?: (...args: T[]) => void,
 ) => (...args: T[]) => void
 ```
+* useAngleUpdater - Render angle update on a second pass via useEffect
 
 3. Eventually a Skin props definition
 ```typescript
@@ -70,7 +71,7 @@ interface MyKnobSkinProps extends KnobProps {
 4. The entire thing
 ```typescript
 import React, { useState } from 'react'
-import Knob, { SkinWrap, KnobProps, composeTwo } from 'react-dial-knob'
+import Knob, { SkinWrap, KnobProps, composeTwo, useAngleUpdater } from 'react-dial-knob'
 
 interface MyKnobSkinTheme {
     activeColor?: string
@@ -83,7 +84,7 @@ interface MyKnobSkinProps extends KnobProps {
 }
 
 export default function MyKnobSkin(props: MyKnobSkinProps): JSX.Element {
-    const [angle, setAngle] = useState(0)
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [isActive, setIsActive] = useState(false)
     const theme = props.theme || {}
     const activeColor = theme.activeColor || '#b56a7a'

@@ -7,6 +7,7 @@ import Silver from './skins/Silver'
 import Donut, { DonutTheme } from './skins/Donut'
 import SkinWrap from './skins/layout/SkinWrap'
 import composeTwo from './util/composeTwo'
+import useAngleUpdater from './util/useAngleUpdater'
 
 export default Knob
 export {
@@ -23,4 +24,5 @@ export {
     KnobProps,
     SkinProps,
     composeTwo,
+    useAngleUpdater,
 }

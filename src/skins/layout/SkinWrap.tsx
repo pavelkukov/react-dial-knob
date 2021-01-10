@@ -7,9 +7,9 @@ interface SkinWrapProps {
 
 export default function SkinWrap(props: SkinWrapProps): JSX.Element {
     const defaultStyle = {
-        position: 'relative' as 'relative',
+        position: 'relative' as const,
         outline: 'none',
-        boxSizing: 'border-box' as 'border-box',
+        boxSizing: 'border-box' as const,
     }
     const userStyle = props.style || {}
     const activeStyle = { ...defaultStyle, ...userStyle }

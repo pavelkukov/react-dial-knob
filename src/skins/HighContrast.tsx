@@ -3,6 +3,7 @@ import Knob from '../Knob'
 import SkinWrap from './layout/SkinWrap'
 import SkinProps from './SkinProps'
 import composeTwo from '../util/composeTwo'
+import useAngleUpdater from '../util/useAngleUpdater'
 
 export interface HighContrastTheme {
     defaultColor?: string
@@ -12,7 +13,7 @@ export interface HighContrastTheme {
 export default function HighContrast(
     props: SkinProps<HighContrastTheme>,
 ): JSX.Element {
-    const [angle, setAngle] = useState(0)
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [isActive, setIsActive] = useState(false)
     const theme = props.theme || {}
     const activeColor = theme.activeColor || '#b56a7a'

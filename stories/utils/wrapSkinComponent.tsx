@@ -29,8 +29,10 @@ interface DefaultValues {
 }
 
 const wrapSkinComponent = (
-    SkinComponent: React.StatelessComponent<
-        SkinProps<DonutTheme | BasicTheme | HighContrastTheme | WhiteTheme | {}>
+    SkinComponent: React.FunctionComponent<
+        SkinProps<
+            DonutTheme | BasicTheme | HighContrastTheme | WhiteTheme | unknown
+        >
     >,
     defaults: DefaultValues = {},
     themeProvider?: () =>

@@ -3,6 +3,7 @@ import Knob from '../Knob'
 import SkinProps from './SkinProps'
 import SkinWrap from './layout/SkinWrap'
 import composeTwo from '../util/composeTwo'
+import useAngleUpdater from '../util/useAngleUpdater'
 
 export interface DonutTheme {
     donutColor?: string
@@ -22,11 +23,11 @@ export interface DonutTheme {
 const uniqClassName = `donut-${new Date().getTime()}`
 
 export default function Donut(props: SkinProps<DonutTheme>): JSX.Element {
-    const [angle, setAngle] = useState(0)
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [centerClass, setCenterClass] = useState(`${uniqClassName}-center`)
 
     const angleChangeHandler = composeTwo<number>(setAngle, props.onAngleChange)
-    const interactionChangeHandler = composeTwo<boolean>(isInteracting => {
+    const interactionChangeHandler = composeTwo<boolean>((isInteracting) => {
         isInteracting
             ? setCenterClass(`${uniqClassName}-center-active`)
             : setCenterClass(`${uniqClassName}-center`)
@@ -131,9 +132,9 @@ export default function Donut(props: SkinProps<DonutTheme>): JSX.Element {
                             <div
                                 className={`${uniqClassName}-slice-one`}
                                 style={{
-                                    clip: `rect(0 ${
-                                        props.diameter
-                                    }px ${props.diameter / 2}px 0)`,
+                                    clip: `rect(0 ${props.diameter}px ${
+                                        props.diameter / 2
+                                    }px 0)`,
                                     transform: `rotate(${angleOne}deg)`,
                                     background: colorOne,
                                 }}
@@ -153,10 +154,12 @@ export default function Donut(props: SkinProps<DonutTheme>): JSX.Element {
                                 style={{
                                     top: `${donutThickness}px`,
                                     left: `${donutThickness}px`,
-                                    width: `${props.diameter -
-                                        donutThickness * 2}px`,
-                                    height: `${props.diameter -
-                                        donutThickness * 2}px`,
+                                    width: `${
+                                        props.diameter - donutThickness * 2
+                                    }px`,
+                                    height: `${
+                                        props.diameter - donutThickness * 2
+                                    }px`,
                                 }}
                             ></div>
                         </div>

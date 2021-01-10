@@ -12,6 +12,7 @@ describe('index exports', () => {
                 'Donut',
                 'SkinWrap',
                 'composeTwo',
+                'useAngleUpdater',
                 'default',
             ].sort(),
         )

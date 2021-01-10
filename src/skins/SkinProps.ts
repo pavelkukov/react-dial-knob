@@ -6,7 +6,7 @@ import { HighContrastTheme } from './HighContrast'
 import { WhiteTheme } from './White'
 
 export default interface SkinProps<
-    T extends DonutTheme | BasicTheme | HighContrastTheme | WhiteTheme | {}
+    T extends DonutTheme | BasicTheme | HighContrastTheme | WhiteTheme | unknown
 > extends KnobProps {
     style?: React.CSSProperties
     theme?: T

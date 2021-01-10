@@ -3,6 +3,7 @@ import Knob from '../Knob'
 import SkinWrap from './layout/SkinWrap'
 import SkinProps from './SkinProps'
 import composeTwo from '../util/composeTwo'
+import useAngleUpdater from '../util/useAngleUpdater'
 
 export interface BasicTheme {
     defaultColor?: string
@@ -13,7 +14,7 @@ export interface BasicTheme {
 }
 
 export default function Basic(props: SkinProps<BasicTheme>): JSX.Element {
-    const [angle, setAngle] = useState(0)
+    const [angle, setAngle] = useAngleUpdater(props.value)
     const [isActive, setIsActive] = useState(false)
     const theme = props.theme || {}
     const activeColor = theme.activeColor || '#a1dca8'

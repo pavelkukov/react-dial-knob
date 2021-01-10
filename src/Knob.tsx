@@ -42,9 +42,9 @@ export default function Knob(props: KnobProps): JSX.Element {
         width: `${props.diameter}px`,
         height: `${props.diameter}px`,
         borderRadius: `${props.diameter / 2}px`,
-        position: 'relative' as 'relative',
+        position: 'relative' as const,
         outline: 'none',
-        boxSizing: 'border-box' as 'border-box',
+        boxSizing: 'border-box' as const,
         overflow: 'hidden',
     }
     const userStyle = props.knobStyle || {}

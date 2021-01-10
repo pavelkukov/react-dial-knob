@@ -20,7 +20,9 @@ function getRandomInt(min: number, max: number): number {
 }
 
 interface RowWithKnobProps {
-    component: (props: SkinProps<any>) => React.ReactElement<SkinProps<any>>
+    component: (
+        props: SkinProps<unknown>,
+    ) => React.ReactElement<SkinProps<unknown>>
 }
 
 function RowWithKnob(

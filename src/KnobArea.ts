@@ -1,9 +1,9 @@
 import { KnobProps } from './Knob'
 
 class KnobArea {
-    onAngleChange: Function
-    onValueChange: Function
-    onInteractionChange: Function
+    onAngleChange: (number) => void
+    onValueChange: (number) => void
+    onInteractionChange: (boolean) => void
     min: number
     max: number
     step: number
@@ -228,7 +228,7 @@ class KnobArea {
                 return this.min + i * this.step
             },
         )
-        const closest = valuesList.reduce(function(prev, curr) {
+        const closest = valuesList.reduce(function (prev, curr) {
             return Math.abs(curr - val) < Math.abs(prev - val) ? curr : prev
         })
         return closest
@@ -299,10 +299,15 @@ class KnobArea {
     }
 
     handleOnKeyDown = (event: React.KeyboardEvent): void => {
-        if (event.keyCode === 38 && this.value + this.step <= this.max) {
+        const keyCode =
+            event.key || { 38: 'ArrowUp', 40: 'ArrowDown' }[event.keyCode]
+        if (keyCode === 'ArrowUp' && this.value + this.step <= this.max) {
             this.value += this.step
             this.angle = this.angleFromValue(this.value)
-        } else if (event.keyCode === 40 && this.value - this.step >= this.min) {
+        } else if (
+            keyCode === 'ArrowDown' &&
+            this.value - this.step >= this.min
+        ) {
             this.value -= this.step
             this.angle = this.angleFromValue(this.value)
         }

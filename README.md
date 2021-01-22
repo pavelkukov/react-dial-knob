@@ -1,38 +1,16 @@
-# React Dial Knob
-Accessible, keyboard/mouse/touch-friendly, dial knob component for the web. 
-Based on pure HTML/SVG elements without dependencies. 
-
-Implemented in TypeScript. Treeshakable with minimal footprint (core around 2kb). 
-
-#### Props
-* value: number
-* min: number
-* max: number
-* step: number
-* ariaLabelledBy?: string
-* onValueChange?: (value: number) => void
-* and few [more](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--props)...
+# ![Donut Knob](/docs/images/donut-konb-48.gif) React Knob (minimal and high-performance)
+**🦚 Demo**: [Donut](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--donut) | [Silver](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--silver) | [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white) | [HighContrast](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--high-contrast) | [Basic](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--basic)
 
 
-## 🦚 Skins & Demo
-The package comes with five themable skins. 
+Mouse/touch/keyboard-friendly, accessible, knob component for the web.
 
-* [Basic](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--basic)
-* [Donut](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--donut)
-* [HighContrast](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--high-contrast)
-* [Silver](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--silver)
-* [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white)
+Based on pure HTML/SVG elements without dependencies.
 
-_________________________________________________________________________
-A short tutorial on how to ["Create skin component"](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) can be found in the storybook and [CodePen](https://codepen.io/pavelkukov/pen/LYVOLoO?editors=0010). Essentially drop an SVG with few lines of code.
-_________________________________________________________________________
-
+Implemented in TypeScript. Treeshakable with minimal footprint (core around 2kb).
 
 ## 📈 Performance
-~4% scripting time while interacting, 96% Idle
-
-![Donut Knob](/docs/images/donut-konb-180.gif)
-![Scripting time is only 4%](/docs/images/scripting-only.png)
+~10% scripting time while interacting, 90% Idle
+![Scripting time](/docs/images/scripting-only-2021.png)
 
 
 ## 🧩 Installing
@@ -43,6 +21,15 @@ npm install --save-dev react-dial-knob
 ```html
 https://unpkg.com/react-dial-knob/dist/react-dial-knob.umd.js
 ```
+
+
+## 🦚 Skins & Demo
+The package comes with five configurable skins - [Donut](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--donut) | [Silver](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--silver) | [White](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--white) | [HighContrast](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--high-contrast) | [Basic](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-skins--basic)
+
+_________________________________________________________________________
+A short tutorial on how to ["Create skin component"](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--create-skin) can be found in the storybook and [CodePen](https://codepen.io/pavelkukov/pen/LYVOLoO?editors=0010). Essentially drop an SVG with few lines of code.
+_________________________________________________________________________
+
 
 ## ✔ Usage
 You have to store `value` and update the component (controlled component).
@@ -72,6 +59,15 @@ export default function MyPage() {
 }
 ```
 
+
+#### Props
+* value: number
+* min: number
+* max: number
+* step: number
+* ariaLabelledBy?: string
+* onValueChange?: (value: number) => void
+* and few [more](https://pavelkukov.github.io/react-dial-knob/?path=/story/knob-knob-component--props)...
 
 ## 🧾 Notes
 

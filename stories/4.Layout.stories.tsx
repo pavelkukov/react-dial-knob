@@ -77,6 +77,7 @@ function RowWithKnob(
 
 interface PositionedKnob {
     style: React.CSSProperties
+    showLabel?: boolean
 }
 
 function PositionedKnob(
@@ -107,7 +108,8 @@ function PositionedKnob(
                     padding: '10px 0',
                 }}
             >
-                With position: &lsquo;{props.style.position}&rsquo;
+                {props.showLabel !== false &&
+                    `With position: "${props.style.position}"`}
             </label>
         </Donut>
     )
@@ -251,6 +253,35 @@ export function MultipleKnobsAndPositionsDemo(): JSX.Element {
 }
 
 MultipleKnobsAndPositionsDemo.story = {
+    parameters: {
+        notes: { disabled: true },
+        knobs: { disabled: true },
+        options: { showPanel: false },
+    },
+}
+
+export function SingleKnob(): JSX.Element {
+    return (
+        <div
+            style={{
+                position: 'relative',
+                height: '300px',
+                width: '100%',
+            }}
+        >
+            <PositionedKnob
+                showLabel={false}
+                style={{
+                    position: 'absolute',
+                    right: 'calc(50% - 100px)',
+                    bottom: '0',
+                }}
+            />
+        </div>
+    )
+}
+
+SingleKnob.story = {
     parameters: {
         notes: { disabled: true },
         knobs: { disabled: true },

@@ -36,6 +36,7 @@ export default function Basic(props: SkinProps<BasicTheme>): JSX.Element {
                 min={props.min}
                 max={props.max}
                 step={props.step}
+                jumpLimit={props.jumpLimit}
                 spaceMaxFromZero={props.spaceMaxFromZero}
                 ariaLabelledBy={props.ariaLabelledBy}
                 ariaValueText={props.ariaValueText}

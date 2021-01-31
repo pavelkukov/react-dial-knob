@@ -10,6 +10,7 @@ export interface KnobProps {
     min: number
     max: number
     step: number
+    jumpLimit?: number
     spaceMaxFromZero?: boolean
     ariaLabelledBy?: string
     ariaValueText?: string
@@ -27,6 +28,7 @@ export interface KnobProps {
 * `min` - minimal value
 * `max` - maximal value
 * `step` - increment step
+* `jumpLimit` - Maximum value change per single mouse event. Expressed as percentage - e.g 0.1 means max 10% change
 * `spaceMaxFromZero` - add additional space between min, and max values. True by default. Make sense to turn it off for small number of steps - e.g 1 to 10. See Donut skin for example.
 * `ariaLabelledBy` - render aria-labelledby attribute
 * `ariaValueText` - render aria-valuetext attribute

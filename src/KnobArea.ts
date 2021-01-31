@@ -9,6 +9,7 @@ class KnobArea {
     step: number
     diameter: number
     spaceMaxFromZero: boolean
+    jumpLimit?: number
     refElement: React.RefObject<HTMLDivElement>
     windowEventListeners: {
         mouse: Array<['mousemove' | 'mouseup', EventListener]>
@@ -64,6 +65,10 @@ class KnobArea {
         this.spaceMaxFromZero =
             props.spaceMaxFromZero !== undefined ? props.spaceMaxFromZero : true
 
+        if (props.jumpLimit) {
+            this.jumpLimit = props.jumpLimit
+        }
+
         if (props.value !== this.value) {
             if (props.min > this.value || props.value < props.min) {
                 this.value = props.min
@@ -101,10 +106,11 @@ class KnobArea {
     }
 
     set value(val: number) {
-        if (this._value === val) {
+        const newValue = this.getValueWithinJumpLimit(val)
+        if (this._value === newValue) {
             return
         }
-        this._value = val
+        this._value = newValue
         if (this.onValueChange) {
             this.onValueChange(this._value)
         }
@@ -133,6 +139,32 @@ class KnobArea {
             return 360 / (this.numSteps + 1)
         }
         return 360 / this.numSteps
+    }
+
+    private getValueWithinJumpLimit(newValue: number): number {
+        if (!this.jumpLimit) {
+            return newValue
+        }
+        const limit = Math.max(
+            this.step,
+            Math.ceil((this.max - this.min) * this.jumpLimit),
+        )
+        if (Math.abs(newValue - this.value) > limit) {
+            if (
+                newValue > this.max * 0.9 &&
+                this.value < this.min + this.max * 0.1
+            ) {
+                return this.min
+            }
+            if (
+                newValue < this.min + this.max * 0.1 &&
+                this.value > this.max * 0.9
+            ) {
+                return this.max
+            }
+            return this.value
+        }
+        return newValue
     }
 
     private getComputedTransformXY(

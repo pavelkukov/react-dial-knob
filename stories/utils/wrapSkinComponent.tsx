@@ -46,6 +46,7 @@ const wrapSkinComponent = (
         max: 120,
         step: 1,
         diameter: 180,
+        jumpLimit: 1,
         spaceMaxFromZero: true,
         ...defaults,
     }
@@ -62,6 +63,12 @@ const wrapSkinComponent = (
         min: Math.max(min, 1),
         max: max,
         step: 1,
+    })
+    const jumpLimit = number('Jump Limit', defaultVals.jumpLimit, {
+        range: true,
+        min: 0,
+        max: 1,
+        step: 0.1,
     })
     const valueOptions = {
         range: true,
@@ -88,6 +95,7 @@ const wrapSkinComponent = (
             max={max}
             step={step}
             value={value}
+            jumpLimit={jumpLimit}
             spaceMaxFromZero={spaceMaxFromZero}
             onValueChange={setValue}
             style={{

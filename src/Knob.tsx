@@ -8,6 +8,7 @@ export interface KnobProps {
     min: number
     max: number
     step: number
+    jumpLimit?: number
     spaceMaxFromZero?: boolean
     ariaLabelledBy?: string
     ariaValueText?: string

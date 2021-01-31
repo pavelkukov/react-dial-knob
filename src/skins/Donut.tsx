@@ -67,6 +67,7 @@ export default function Donut(props: SkinProps<DonutTheme>): JSX.Element {
                 min={props.min}
                 max={props.max}
                 step={props.step}
+                jumpLimit={props.jumpLimit}
                 spaceMaxFromZero={props.spaceMaxFromZero}
                 ariaLabelledBy={props.ariaLabelledBy}
                 ariaValueText={props.ariaValueText}

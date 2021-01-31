@@ -32,6 +32,7 @@ export default function Silver(props: SkinProps<unknown>): JSX.Element {
                 min={props.min}
                 max={props.max}
                 step={props.step}
+                jumpLimit={props.jumpLimit}
                 spaceMaxFromZero={props.spaceMaxFromZero}
                 ariaLabelledBy={props.ariaLabelledBy}
                 ariaValueText={props.ariaValueText}
